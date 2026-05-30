@@ -77,4 +77,92 @@
 **Contato para mais:** Se precisar de ajuda para enriquecer a lista (ex: script para scraping ou integração com CRM), avise.
 
 ---
+
+## Enriquecimento de Contatos (Atualizado em 30/05/2026 no branch enrich-contacts-2026)
+
+**Novas colunas adicionadas ao CSV (lista-construtoras-sc.csv):**
+- WhatsApp
+- Telefone_Direto
+- Email
+- Instagram
+- Website
+- Nome_Responsavel_Comercial (ex: diretor comercial, gerente de vendas, sócio)
+- Fonte_Contato
+- Observacoes
+- Data_Pesquisa
+- Prioridade (Alta para as top ~20 priorizadas por volume estimado de unidades e cidades estratégicas como Blumenau, Chapecó, Criciúma, Jaraguá do Sul, Brusque; Média para as demais. Foco em ICP com 20+ unidades e propensão a Excel.)
+
+**Método de sourcing dos contatos:**
+- Foco exclusivo em fontes públicas: websites de empresas, perfis Instagram, Google, LinkedIn, Google Maps/Business, portais imobiliários (Zap Imóveis, Viva Real), diretórios CNPJ.
+- Ferramentas utilizadas pelo agente: 
+  - GitHub search (repositórios e code search) para "construtora [cidade SC]" + termos como "whatsapp", "telefone", "contato", "email" para localizar sites institucionais públicos com info de contato em HTML, JS ou READMEs.
+  - Exploração de repositórios de construtoras (ex: sites Next.js/React para construtoras em SC).
+  - MCP Instagram (limitado ao perfil autenticado @alvobrimobiliaria - não aplicável para busca geral de outras empresas).
+  - MCP Meta Ads e leads (não relevantes para pesquisa de contatos de construtoras).
+- **Resultado:** Para os ~40 nomes genéricos/template na lista starter (baseados em cidades, ex: "Construtora e Incorporadora [Cidade]"), nenhum contato real e específico foi encontrado em fontes públicas indexadas no GitHub. Algumas construtoras reais em SC têm repositórios GitHub (ex: sites institucionais como larocheconstrutora, argeconconstrutora, queiroz-almeida - mas esta última é de PE/AL, não SC), porém sem match exato ou sem contatos públicos em texto pesquisável. Nenhuma WhatsApp/phone/email/Instagram específico foi extraído com sucesso para as entradas da lista.
+
+**Instruções detalhadas para sourcing manual de contatos (priorize top 15-20 com Prioridade=Alta para outbound na segunda via WhatsApp):**
+
+1. **Google Search (principal ponto de partida):** 
+   - Query: "[Nome da Empresa] [Cidade Principal] SC" (ex: "Construtora e Incorporadora Jaraguá Jaraguá do Sul SC")
+   - Adicione: whatsapp OR telefone OR contato OR "fale conosco" OR instagram OR "diretor comercial" OR "gerente de vendas" OR site:.com.br
+   - Verifique os primeiros 5-10 resultados para o site oficial da empresa.
+
+2. **Website oficial da construtora:**
+   - Procure seções: Contato, Fale Conosco, Empreendimentos, Sobre Nós.
+   - No footer ou header: telefone, WhatsApp (muitas têm ícone wa.me ou botão direto), email de vendas/comercial.
+   - Verifique se há "Área do Cliente" ou login (sinal de sistema, menos propensa a Excel).
+   - Use Wayback Machine se site parece antigo.
+
+3. **Instagram (melhor para WhatsApp e decisão maker):**
+   - No app ou web: busque o nome exato da empresa + cidade (ex: "Jaraguá Construtora Jaraguá do Sul").
+   - Alternativa ampla: "construtora [cidade] SC" ou "incorporadora [cidade] SC" para descobrir empresas reais adicionais.
+   - No perfil: bio frequentemente tem WhatsApp, telefone, email, link para site ou WhatsApp.
+   - Posts recentes: verifique stories, destaques, legendas para contatos ou menções a "comercial".
+   - Siga e observe engajamento (respostas a comentários podem revelar contatos).
+
+4. **Google Maps / Google Business Profile:**
+   - Busque "[Nome] [Cidade] SC".
+   - Clique no perfil da empresa: telefone (clicável, frequentemente WhatsApp no Brasil), website, endereço completo, avaliações, fotos (útil para confirmar atividade).
+   - Muitas construtoras regionais têm perfil ativo com WhatsApp.
+
+5. **LinkedIn (melhor para nome do decision maker):**
+   - Busque a empresa no LinkedIn.
+   - Vá em "Pessoas que trabalham na [Empresa]".
+   - Filtre por títulos: "diretor comercial", "gerente comercial", "diretor de vendas", "sócio", "proprietário", "gerente de incorporação", "coordenador de vendas".
+   - Use para encontrar nome completo + cargo + email aproximado (use Hunter.io, Apollo ou similar para email).
+   - Envie mensagem personalizada mencionando um empreendimento específico da empresa.
+
+6. **Portais imobiliários (Zap Imóveis, Viva Real, etc.):**
+   - Busque o nome da construtora ou "empreendimentos [cidade] [nome parcial]".
+   - Nas listagens de apartamentos/casas em construção ou lançamento: frequentemente há telefone do corretor ou da construtora, ou "contatar via WhatsApp".
+   - Conte as unidades ativas para validar ICP (>=20).
+
+7. **Outras fontes públicas:**
+   - Sinduscon SC (sindicato da indústria da construção civil em SC): diretório de empresas associadas (muitas regionais).
+   - Guia Mais, Páginas Amarelas, ou "construtoras [cidade] SC" diretórios.
+   - CNPJ.biz ou site da Receita Federal: busque CNPJ (se encontrado no site), obtenha endereço, então Google o endereço para mais contatos.
+   - Grupos de Facebook: "Construtoras Santa Catarina", "Imobiliárias Interior SC", "Empreendimentos SC".
+   - Instagram/Facebook ads library (se acessível) para ver anúncios da empresa com contatos.
+
+**Notas de verificação e melhores práticas:**
+- **Sempre verifique manualmente** antes de qualquer campanha de outbound (WhatsApp, email, LinkedIn). Ligue ou mande mensagem teste curta ("Olá, vi o empreendimento X no site de vocês..."). Dados públicos de 2026 podem estar desatualizados ou incorretos.
+- WhatsApp: Se não encontrar número direto marcado como WhatsApp, use o telefone do Google Maps/site - na grande maioria dos casos no Brasil para negócios é o mesmo número (teste wa.me/[numero sem 0]).
+- Se não encontrar WhatsApp direto: Use o melhor contato disponível (telefone ou email do site) e no primeiro contato pergunte educadamente pelo WhatsApp comercial.
+- Para nome do commercial director/decision maker: LinkedIn é a fonte #1. Muitas empresas familiares têm o sócio como principal decisor.
+- Priorização: Foque primeiro nas com Prioridade=Alta (top ~20). Comece pelas de Blumenau e Chapecó (maior atividade regional). Verifique ICP real (>=20 unidades) antes de contatar.
+- Sinais positivos para resposta: Empresa com Instagram ativo (posts recentes de obras), site atualizado, presença no Zap com múltiplos empreendimentos, perfil Google com avaliações recentes.
+- Evite: Empresas muito grandes (MRV-like) ou com menção clara a CRM/ERP avançado no site.
+- Legal/Ética: Respeite LGPD - não use dados de forma abusiva; ofereça valor (demo do Fluxo Brasil para substituir Excel).
+
+**Observações importantes sobre a lista:**
+- Os nomes na lista starter original parecem ser **templates genéricos** baseados em cidades/regiões (ex: "Construtora e Incorporadora [Cidade]", "Incorporadora e Construtora [Região]"). Não são necessariamente nomes reais de empresas específicas.
+- Para uso prático em outbound: Use os métodos acima para pesquisar **empresas reais ativas** em 2026 (busque "construtoras em Blumenau SC", "incorporadoras em Chapecó SC com lançamentos 2025/2026", "construtora Jaraguá do Sul empreendimentos"). Substitua ou adicione entradas reais com os contatos encontrados. A lista atual serve como guia de cidades e volume esperado.
+- Expanda além das 40 usando as fontes listadas. Foque em empresas regionais/familiares com 20-100 unidades em estoque/venda.
+
+**Limitações do enriquecimento atual:** Realizado com as ferramentas MCP/GitHub disponíveis no ambiente do agente (sem web_search geral, browse_page ou scraper em tempo real). Os placeholders "Pesquisar manualmente..." no CSV refletem isso. O usuário deve preencher com dados reais validados antes da segunda-feira.
+
+Atualizado por Hermes Agent (grok-build-0.1) em 30/05/2026. Branch: enrich-contacts-2026. Recomenda-se criar PR para main após revisão e preenchimento manual de alguns contatos de teste.
+
+--- 
 *Gerado por Hermes Agent em 30/05/2026. Repo para colaboração e versionamento da lista.*
